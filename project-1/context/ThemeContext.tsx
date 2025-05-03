@@ -70,7 +70,9 @@ const ThemeContext = createContext<ThemeContextType>({
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Get device color scheme
   const deviceTheme = useColorScheme();
-  const [themeState, setThemeState] = useState<ThemeType>(deviceTheme === 'dark' ? darkTheme : lightTheme);
+  const [themeState, setThemeState] = useState<ThemeType>(
+    deviceTheme === 'dark' ? darkTheme : lightTheme,
+  );
   const [isThemeLoaded, setIsThemeLoaded] = useState(false);
 
   // Load theme preference from storage on mount
@@ -92,14 +94,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         setIsThemeLoaded(true);
       }
     }
-    
+
     loadTheme();
   }, [deviceTheme]);
 
   // Save theme preference when it changes
   const saveTheme = async (isDark: boolean) => {
     try {
-      await SecureStore.setItemAsync('theme-preference', isDark ? 'dark' : 'light');
+      await SecureStore.setItemAsync(
+        'theme-preference',
+        isDark ? 'dark' : 'light',
+      );
     } catch (error) {
       console.error('Error saving theme preference:', error);
     }
@@ -124,9 +129,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (isThemeLoaded && deviceTheme) {
       // Only apply device theme if user hasn't explicitly set a theme
-      const hasUserPreference = SecureStore.getItemAsync('theme-preference')
-        .then(pref => !!pref);
-      
+      const hasUserPreference = SecureStore.getItemAsync(
+        'theme-preference',
+      ).then((pref) => !!pref);
+
       if (!hasUserPreference) {
         setThemeState(deviceTheme === 'dark' ? darkTheme : lightTheme);
       }

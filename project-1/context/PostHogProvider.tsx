@@ -12,14 +12,18 @@ const postHog = new PostHog(
     captureDeviceInfo: true,
     captureApplicationLifecycleEvents: true,
     sendFeatureFlags: true,
-  }
+  },
 );
 
 // Create context
 export const PostHogContext = createContext(postHog);
 
 // Provider component
-export default function PostHogProvider({ children }: { children: React.ReactNode }) {
+export default function PostHogProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   useEffect(() => {
     // Initialize PostHog with device info
     const initPostHog = async () => {
@@ -33,13 +37,13 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
         deviceType: Device.deviceType || 'Unknown',
         brand: Device.brand || 'Unknown',
       });
-      
+
       // Enable feature flags (if you use them)
       await postHog.reloadFeatureFlags();
     };
-    
+
     initPostHog();
-    
+
     return () => {
       // Clean up if needed
     };

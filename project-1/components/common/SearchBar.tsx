@@ -24,15 +24,21 @@ export default function SearchBar({
   };
 
   return (
-    <View style={[
-      styles.container,
-      { 
-        backgroundColor: theme.colors.card,
-        borderColor: theme.colors.border
-      }
-    ]}>
-      <Search size={20} color={theme.colors.textSecondary} style={styles.icon} />
-      
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: theme.colors.card,
+          borderColor: theme.colors.border,
+        },
+      ]}
+    >
+      <Search
+        size={20}
+        color={theme.colors.textSecondary}
+        style={styles.icon}
+      />
+
       <TextInput
         style={[styles.input, { color: theme.colors.text }]}
         value={value}
@@ -41,7 +47,7 @@ export default function SearchBar({
         placeholderTextColor={theme.colors.textTertiary}
         returnKeyType="search"
       />
-      
+
       {value.length > 0 && (
         <TouchableOpacity onPress={handleClear} style={styles.clearButton}>
           <X size={18} color={theme.colors.textSecondary} />

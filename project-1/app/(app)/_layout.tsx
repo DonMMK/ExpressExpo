@@ -26,14 +26,14 @@ export default function AppLayout() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen 
+      <Stack.Screen
         name="profile-settings"
-        options={{ 
+        options={{
           headerShown: true,
           title: 'Settings',
           presentation: 'modal',
           animation: 'slide_from_bottom',
-        }} 
+        }}
       />
     </Stack>
   );

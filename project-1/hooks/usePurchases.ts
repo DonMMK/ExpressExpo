@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from './useAuth';
-import { checkSubscriptionStatus, getCustomerInfo, getOfferings } from '@/lib/revenuecat';
+import {
+  checkSubscriptionStatus,
+  getCustomerInfo,
+  getOfferings,
+} from '@/lib/revenuecat';
 import { CustomerInfo, Offering } from 'react-native-purchases';
 import { usePostHog } from './usePostHog';
 
@@ -13,7 +17,9 @@ interface UsePurchasesReturn {
 }
 
 export function usePurchases(): UsePurchasesReturn {
-  const [subscriptionStatus, setSubscriptionStatus] = useState<'active' | 'inactive' | 'unknown'>('unknown');
+  const [subscriptionStatus, setSubscriptionStatus] = useState<
+    'active' | 'inactive' | 'unknown'
+  >('unknown');
   const [offerings, setOfferings] = useState<Offering | null>(null);
   const [customerInfo, setCustomerInfo] = useState<CustomerInfo | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,19 +29,19 @@ export function usePurchases(): UsePurchasesReturn {
   const loadPurchasesInfo = async () => {
     try {
       setIsLoading(true);
-      
+
       // Get subscription status
       const status = await checkSubscriptionStatus();
       setSubscriptionStatus(status as 'active' | 'inactive' | 'unknown');
-      
+
       // Get customer info
       const info = await getCustomerInfo();
       setCustomerInfo(info);
-      
+
       // Get offerings
       const availableOfferings = await getOfferings();
       setOfferings(availableOfferings);
-      
+
       // Track subscription status in PostHog
       capture('subscription_status_checked', { status });
     } catch (error) {

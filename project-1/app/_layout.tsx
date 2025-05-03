@@ -4,11 +4,11 @@ import { StatusBar } from 'expo-status-bar';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
 import { useFonts } from 'expo-font';
 import { SplashScreen } from 'expo-router';
-import { 
-  Inter_400Regular, 
+import {
+  Inter_400Regular,
   Inter_500Medium,
   Inter_600SemiBold,
-  Inter_700Bold 
+  Inter_700Bold,
 } from '@expo-google-fonts/inter';
 import { AuthProvider } from '@/context/AuthContext';
 import { ThemeProvider } from '@/context/ThemeContext';

@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { useTheme } from '@/context/ThemeContext';
@@ -13,7 +21,7 @@ export default function ProfileSettingsScreen() {
   const { user, updateUserProfile, deleteAccount } = useAuth();
   const { capture } = usePostHog();
   const router = useRouter();
-  
+
   const [name, setName] = useState('User Name');
   const [email, setEmail] = useState('user@example.com');
   const [isLoading, setIsLoading] = useState(false);
@@ -61,13 +69,15 @@ export default function ProfileSettingsScreen() {
           },
           style: 'destructive',
         },
-      ]
+      ],
     );
   };
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      <ScrollView 
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
+      <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={false}
@@ -76,20 +86,27 @@ export default function ProfileSettingsScreen() {
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
             Profile Information
           </Text>
-          <Text style={[styles.sectionDescription, { color: theme.colors.textSecondary }]}>
+          <Text
+            style={[
+              styles.sectionDescription,
+              { color: theme.colors.textSecondary },
+            ]}
+          >
             Update your personal information
           </Text>
-          
+
           <View style={styles.formGroup}>
-            <Text style={[styles.label, { color: theme.colors.text }]}>Name</Text>
+            <Text style={[styles.label, { color: theme.colors.text }]}>
+              Name
+            </Text>
             <TextInput
               style={[
                 styles.input,
-                { 
+                {
                   backgroundColor: theme.colors.card,
                   color: theme.colors.text,
-                  borderColor: theme.colors.border
-                }
+                  borderColor: theme.colors.border,
+                },
               ]}
               value={name}
               onChangeText={setName}
@@ -97,17 +114,19 @@ export default function ProfileSettingsScreen() {
               placeholderTextColor={theme.colors.textTertiary}
             />
           </View>
-          
+
           <View style={styles.formGroup}>
-            <Text style={[styles.label, { color: theme.colors.text }]}>Email</Text>
+            <Text style={[styles.label, { color: theme.colors.text }]}>
+              Email
+            </Text>
             <TextInput
               style={[
                 styles.input,
-                { 
+                {
                   backgroundColor: theme.colors.card,
                   color: theme.colors.text,
-                  borderColor: theme.colors.border
-                }
+                  borderColor: theme.colors.border,
+                },
               ]}
               value={email}
               onChangeText={setEmail}
@@ -117,12 +136,17 @@ export default function ProfileSettingsScreen() {
               editable={!user?.isAnonymous}
             />
             {user?.isAnonymous && (
-              <Text style={[styles.helperText, { color: theme.colors.textTertiary }]}>
+              <Text
+                style={[
+                  styles.helperText,
+                  { color: theme.colors.textTertiary },
+                ]}
+              >
                 Sign in with a provider to set an email address
               </Text>
             )}
           </View>
-          
+
           <Button
             title="Save Changes"
             onPress={handleSaveChanges}
@@ -131,17 +155,28 @@ export default function ProfileSettingsScreen() {
             disabled={user?.isAnonymous}
           />
         </View>
-        
-        <View style={[styles.dangerSection, { backgroundColor: colors.error + '10' }]}>
+
+        <View
+          style={[
+            styles.dangerSection,
+            { backgroundColor: colors.error + '10' },
+          ]}
+        >
           <Text style={[styles.dangerTitle, { color: colors.error }]}>
             Delete Account
           </Text>
-          <Text style={[styles.dangerDescription, { color: theme.colors.textSecondary }]}>
-            This action will permanently delete your account and all associated data. This cannot be undone.
+          <Text
+            style={[
+              styles.dangerDescription,
+              { color: theme.colors.textSecondary },
+            ]}
+          >
+            This action will permanently delete your account and all associated
+            data. This cannot be undone.
           </Text>
-          
-          <TouchableOpacity 
-            style={[styles.deleteButton, { borderColor: colors.error }]} 
+
+          <TouchableOpacity
+            style={[styles.deleteButton, { borderColor: colors.error }]}
             onPress={handleDeleteAccount}
             disabled={isLoading}
           >

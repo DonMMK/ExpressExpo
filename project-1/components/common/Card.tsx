@@ -1,12 +1,12 @@
 import React from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  Image, 
-  TouchableOpacity, 
-  ViewStyle, 
-  StyleProp 
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ViewStyle,
+  StyleProp,
 } from 'react-native';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -33,22 +33,25 @@ export default function Card({
     <TouchableOpacity
       style={[
         styles.card,
-        { backgroundColor: theme.colors.card, shadowColor: theme.dark ? '#000' : '#222' },
+        {
+          backgroundColor: theme.colors.card,
+          shadowColor: theme.dark ? '#000' : '#222',
+        },
         style,
       ]}
       onPress={onPress}
       activeOpacity={0.8}
     >
-      <Image 
-        source={{ uri: image }} 
-        style={[styles.image, { height: imageHeight }]} 
-        resizeMode="cover" 
+      <Image
+        source={{ uri: image }}
+        style={[styles.image, { height: imageHeight }]}
+        resizeMode="cover"
       />
       <View style={styles.content}>
         <Text style={[styles.title, { color: theme.colors.text }]}>
           {title}
         </Text>
-        <Text 
+        <Text
           style={[styles.description, { color: theme.colors.textSecondary }]}
           numberOfLines={2}
         >

@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, Switch, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Switch,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { Moon, Sun, ChevronRight, LogOut } from 'lucide-react-native';
@@ -20,33 +28,31 @@ export default function SettingsScreen() {
   }, []);
 
   const handleSignOut = async () => {
-    Alert.alert(
-      'Sign Out',
-      'Are you sure you want to sign out?',
-      [
-        {
-          text: 'Cancel',
-          style: 'cancel',
+    Alert.alert('Sign Out', 'Are you sure you want to sign out?', [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      {
+        text: 'Sign Out',
+        onPress: async () => {
+          capture('user_signed_out');
+          await signOut();
+          reset();
+          router.replace('/(auth)/sign-in');
         },
-        {
-          text: 'Sign Out',
-          onPress: async () => {
-            capture('user_signed_out');
-            await signOut();
-            reset();
-            router.replace('/(auth)/sign-in');
-          },
-          style: 'destructive',
-        },
-      ]
-    );
+        style: 'destructive',
+      },
+    ]);
   };
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
       <HeaderBar title="Settings" />
-      
-      <ScrollView 
+
+      <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={false}
@@ -55,13 +61,21 @@ export default function SettingsScreen() {
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
             Appearance
           </Text>
-          
+
           <View style={styles.settingItem}>
             <View style={styles.settingLabelContainer}>
               {theme.dark ? (
-                <Moon size={20} color={theme.colors.text} style={styles.settingIcon} />
+                <Moon
+                  size={20}
+                  color={theme.colors.text}
+                  style={styles.settingIcon}
+                />
               ) : (
-                <Sun size={20} color={theme.colors.text} style={styles.settingIcon} />
+                <Sun
+                  size={20}
+                  color={theme.colors.text}
+                  style={styles.settingIcon}
+                />
               )}
               <Text style={[styles.settingLabel, { color: theme.colors.text }]}>
                 Dark Mode
@@ -78,12 +92,12 @@ export default function SettingsScreen() {
             />
           </View>
         </View>
-        
+
         <View style={[styles.section, { backgroundColor: theme.colors.card }]}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
             Notifications
           </Text>
-          
+
           <View style={styles.settingItem}>
             <Text style={[styles.settingLabel, { color: theme.colors.text }]}>
               Push Notifications
@@ -97,7 +111,7 @@ export default function SettingsScreen() {
               thumbColor={colors.white}
             />
           </View>
-          
+
           <View style={styles.settingItem}>
             <Text style={[styles.settingLabel, { color: theme.colors.text }]}>
               Email Notifications
@@ -112,47 +126,61 @@ export default function SettingsScreen() {
             />
           </View>
         </View>
-        
+
         <View style={[styles.section, { backgroundColor: theme.colors.card }]}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
             About
           </Text>
-          
-          <TouchableOpacity 
+
+          <TouchableOpacity
             style={styles.settingItemWithArrow}
-            onPress={() => capture('about_item_pressed', { item: 'privacy_policy' })}
+            onPress={() =>
+              capture('about_item_pressed', { item: 'privacy_policy' })
+            }
           >
             <Text style={[styles.settingLabel, { color: theme.colors.text }]}>
               Privacy Policy
             </Text>
             <ChevronRight size={20} color={theme.colors.textSecondary} />
           </TouchableOpacity>
-          
-          <TouchableOpacity 
+
+          <TouchableOpacity
             style={styles.settingItemWithArrow}
-            onPress={() => capture('about_item_pressed', { item: 'terms_of_service' })}
+            onPress={() =>
+              capture('about_item_pressed', { item: 'terms_of_service' })
+            }
           >
             <Text style={[styles.settingLabel, { color: theme.colors.text }]}>
               Terms of Service
             </Text>
             <ChevronRight size={20} color={theme.colors.textSecondary} />
           </TouchableOpacity>
-          
-          <TouchableOpacity 
+
+          <TouchableOpacity
             style={styles.settingItemWithArrow}
-            onPress={() => capture('about_item_pressed', { item: 'app_version' })}
+            onPress={() =>
+              capture('about_item_pressed', { item: 'app_version' })
+            }
           >
             <Text style={[styles.settingLabel, { color: theme.colors.text }]}>
               App Version
             </Text>
-            <Text style={[styles.versionText, { color: theme.colors.textSecondary }]}>
+            <Text
+              style={[
+                styles.versionText,
+                { color: theme.colors.textSecondary },
+              ]}
+            >
               1.0.0
             </Text>
           </TouchableOpacity>
         </View>
-        
-        <TouchableOpacity 
-          style={[styles.signOutButton, { backgroundColor: colors.error + '10' }]} 
+
+        <TouchableOpacity
+          style={[
+            styles.signOutButton,
+            { backgroundColor: colors.error + '10' },
+          ]}
           onPress={handleSignOut}
         >
           <LogOut size={20} color={colors.error} style={styles.signOutIcon} />

@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { ChevronRight, Edit2 } from 'lucide-react-native';
@@ -45,48 +52,90 @@ export default function ProfileScreen() {
   };
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
       <View style={styles.header}>
-        <Text style={[styles.headerTitle, { color: theme.colors.text }]}>Profile</Text>
+        <Text style={[styles.headerTitle, { color: theme.colors.text }]}>
+          Profile
+        </Text>
         <TouchableOpacity onPress={handleOpenSettings}>
           <Edit2 size={24} color={theme.colors.text} />
         </TouchableOpacity>
       </View>
-      
-      <ScrollView 
+
+      <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={false}
       >
-        <View style={[styles.profileCard, { backgroundColor: theme.colors.card }]}>
+        <View
+          style={[styles.profileCard, { backgroundColor: theme.colors.card }]}
+        >
           <Image
-            source={{ uri: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' }}
+            source={{
+              uri: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+            }}
             style={styles.profileImage}
           />
           <View style={styles.profileInfo}>
             <Text style={[styles.profileName, { color: theme.colors.text }]}>
               {user?.isAnonymous ? 'Guest User' : 'Registered User'}
             </Text>
-            <Text style={[styles.profileEmail, { color: theme.colors.textSecondary }]}>
+            <Text
+              style={[
+                styles.profileEmail,
+                { color: theme.colors.textSecondary },
+              ]}
+            >
               {user?.isAnonymous ? 'Anonymous Account' : 'user@example.com'}
             </Text>
-            <View style={[styles.badge, { backgroundColor: subscriptionStatus === 'active' ? colors.success + '20' : colors.warning + '20' }]}>
-              <Text style={[styles.badgeText, { 
-                color: subscriptionStatus === 'active' ? colors.success : colors.warning 
-              }]}>
+            <View
+              style={[
+                styles.badge,
+                {
+                  backgroundColor:
+                    subscriptionStatus === 'active'
+                      ? colors.success + '20'
+                      : colors.warning + '20',
+                },
+              ]}
+            >
+              <Text
+                style={[
+                  styles.badgeText,
+                  {
+                    color:
+                      subscriptionStatus === 'active'
+                        ? colors.success
+                        : colors.warning,
+                  },
+                ]}
+              >
                 {subscriptionStatus === 'active' ? 'Premium' : 'Free Plan'}
               </Text>
             </View>
           </View>
         </View>
-        
+
         {user?.isAnonymous && (
-          <View style={[styles.linkAccountSection, { backgroundColor: theme.colors.card }]}>
+          <View
+            style={[
+              styles.linkAccountSection,
+              { backgroundColor: theme.colors.card },
+            ]}
+          >
             <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
               Link Your Account
             </Text>
-            <Text style={[styles.sectionDescription, { color: theme.colors.textSecondary }]}>
-              Sign in with a provider to save your data and access from multiple devices
+            <Text
+              style={[
+                styles.sectionDescription,
+                { color: theme.colors.textSecondary },
+              ]}
+            >
+              Sign in with a provider to save your data and access from multiple
+              devices
             </Text>
             <View style={styles.linkButtonsContainer}>
               <Button
@@ -104,14 +153,26 @@ export default function ProfileScreen() {
             </View>
           </View>
         )}
-        
+
         {subscriptionStatus !== 'active' && (
-          <View style={[styles.subscriptionCard, { backgroundColor: theme.colors.card }]}>
+          <View
+            style={[
+              styles.subscriptionCard,
+              { backgroundColor: theme.colors.card },
+            ]}
+          >
             <View style={styles.subscriptionContent}>
-              <Text style={[styles.subscriptionTitle, { color: theme.colors.text }]}>
+              <Text
+                style={[styles.subscriptionTitle, { color: theme.colors.text }]}
+              >
                 Upgrade to Premium
               </Text>
-              <Text style={[styles.subscriptionDescription, { color: theme.colors.textSecondary }]}>
+              <Text
+                style={[
+                  styles.subscriptionDescription,
+                  { color: theme.colors.textSecondary },
+                ]}
+              >
                 Get access to all premium features and remove ads
               </Text>
             </View>
@@ -122,43 +183,54 @@ export default function ProfileScreen() {
             />
           </View>
         )}
-        
-        <View style={[styles.settingsSection, { backgroundColor: theme.colors.card }]}>
+
+        <View
+          style={[
+            styles.settingsSection,
+            { backgroundColor: theme.colors.card },
+          ]}
+        >
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
             Account Settings
           </Text>
-          
-          <TouchableOpacity 
-            style={styles.settingsItem} 
+
+          <TouchableOpacity
+            style={styles.settingsItem}
             onPress={() => {
               capture('settings_item_pressed', { item: 'profile' });
             }}
           >
-            <Text style={[styles.settingsItemText, { color: theme.colors.text }]}>
+            <Text
+              style={[styles.settingsItemText, { color: theme.colors.text }]}
+            >
               Edit Profile
             </Text>
             <ChevronRight size={20} color={theme.colors.textSecondary} />
           </TouchableOpacity>
-          
-          <TouchableOpacity 
-            style={styles.settingsItem} 
+
+          <TouchableOpacity
+            style={styles.settingsItem}
             onPress={() => {
               capture('settings_item_pressed', { item: 'notifications' });
             }}
           >
-            <Text style={[styles.settingsItemText, { color: theme.colors.text }]}>
+            <Text
+              style={[styles.settingsItemText, { color: theme.colors.text }]}
+            >
               Notification Preferences
             </Text>
             <ChevronRight size={20} color={theme.colors.textSecondary} />
           </TouchableOpacity>
-          
-          <TouchableOpacity 
-            style={styles.settingsItem} 
+
+          <TouchableOpacity
+            style={styles.settingsItem}
             onPress={() => {
               capture('settings_item_pressed', { item: 'privacy' });
             }}
           >
-            <Text style={[styles.settingsItemText, { color: theme.colors.text }]}>
+            <Text
+              style={[styles.settingsItemText, { color: theme.colors.text }]}
+            >
               Privacy Settings
             </Text>
             <ChevronRight size={20} color={theme.colors.textSecondary} />

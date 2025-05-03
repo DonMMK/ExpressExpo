@@ -12,22 +12,25 @@ const DUMMY_DATA = [
     id: '1',
     title: 'Premium Subscription',
     description: 'Get access to all premium features',
-    image: 'https://images.pexels.com/photos/3760529/pexels-photo-3760529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    tag: 'PREMIUM'
+    image:
+      'https://images.pexels.com/photos/3760529/pexels-photo-3760529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    tag: 'PREMIUM',
   },
   {
     id: '2',
     title: 'Community Forum',
     description: 'Connect with other users',
-    image: 'https://images.pexels.com/photos/3153201/pexels-photo-3153201.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    tag: 'FREE'
+    image:
+      'https://images.pexels.com/photos/3153201/pexels-photo-3153201.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    tag: 'FREE',
   },
   {
     id: '3',
     title: 'Advanced Features',
     description: 'Explore advanced capabilities',
-    image: 'https://images.pexels.com/photos/3184614/pexels-photo-3184614.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    tag: 'POPULAR'
+    image:
+      'https://images.pexels.com/photos/3184614/pexels-photo-3184614.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    tag: 'POPULAR',
   },
 ];
 
@@ -48,20 +51,22 @@ export default function DiscoverScreen() {
   };
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
       <HeaderBar title="Discover" />
-      
+
       <View style={styles.content}>
-        <SearchBar 
+        <SearchBar
           value={search}
           onChangeText={handleSearch}
           placeholder="Search features, content, etc."
         />
-        
+
         <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
           Featured Content
         </Text>
-        
+
         <FlatList
           data={DUMMY_DATA}
           renderItem={({ item }) => (
@@ -71,7 +76,10 @@ export default function DiscoverScreen() {
               image={item.image}
               tag={item.tag}
               onPress={() => {
-                capture('featured_item_selected', { item_id: item.id, title: item.title });
+                capture('featured_item_selected', {
+                  item_id: item.id,
+                  title: item.title,
+                });
               }}
             />
           )}

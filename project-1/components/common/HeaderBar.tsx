@@ -10,9 +10,9 @@ interface HeaderBarProps {
   onNotificationPress?: () => void;
 }
 
-export default function HeaderBar({ 
-  title, 
-  subtitle, 
+export default function HeaderBar({
+  title,
+  subtitle,
   showNotification = false,
   onNotificationPress,
 }: HeaderBarProps) {
@@ -25,15 +25,20 @@ export default function HeaderBar({
           {title}
         </Text>
         {subtitle && (
-          <Text style={[styles.subtitle, { color: theme.colors.textSecondary }]}>
+          <Text
+            style={[styles.subtitle, { color: theme.colors.textSecondary }]}
+          >
             {subtitle}
           </Text>
         )}
       </View>
-      
+
       {showNotification && (
-        <TouchableOpacity 
-          style={[styles.notificationButton, { backgroundColor: theme.colors.card }]}
+        <TouchableOpacity
+          style={[
+            styles.notificationButton,
+            { backgroundColor: theme.colors.card },
+          ]}
           onPress={onNotificationPress}
         >
           <Bell size={20} color={theme.colors.text} />

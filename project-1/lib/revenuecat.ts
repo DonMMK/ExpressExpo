@@ -6,7 +6,9 @@ import Constants from 'expo-constants';
 export const initializePurchases = (userId?: string) => {
   const apiKey = Platform.select({
     ios: Constants.expoConfig?.extra?.revenuecatApiKeyIos || 'YOUR_IOS_API_KEY',
-    android: Constants.expoConfig?.extra?.revenuecatApiKeyAndroid || 'YOUR_ANDROID_API_KEY',
+    android:
+      Constants.expoConfig?.extra?.revenuecatApiKeyAndroid ||
+      'YOUR_ANDROID_API_KEY',
   }) as string;
 
   if (!apiKey) {
@@ -24,13 +26,12 @@ export const initializePurchases = (userId?: string) => {
   try {
     // Initialize RevenueCat SDK
     Purchases.configure(configuration);
-    
+
     // Log in user if we have a userId
     if (userId) {
-      Purchases.logIn(userId)
-        .catch((error) => {
-          console.error('RevenueCat login error:', error);
-        });
+      Purchases.logIn(userId).catch((error) => {
+        console.error('RevenueCat login error:', error);
+      });
     }
   } catch (error) {
     console.error('RevenueCat initialization error:', error);

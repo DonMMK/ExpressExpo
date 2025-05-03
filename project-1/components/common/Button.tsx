@@ -1,12 +1,12 @@
 import React from 'react';
-import { 
-  TouchableOpacity, 
-  Text, 
-  StyleSheet, 
-  ActivityIndicator, 
-  ViewStyle, 
-  TextStyle, 
-  StyleProp 
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  ViewStyle,
+  TextStyle,
+  StyleProp,
 } from 'react-native';
 import { useTheme } from '@/context/ThemeContext';
 import { colors } from '@/constants/colors';
@@ -143,7 +143,10 @@ export default function Button({
       activeOpacity={0.7}
     >
       {isLoading ? (
-        <ActivityIndicator size="small" color={variant === 'outline' ? theme.colors.primary : colors.white} />
+        <ActivityIndicator
+          size="small"
+          color={variant === 'outline' ? theme.colors.primary : colors.white}
+        />
       ) : (
         <>
           {icon && icon}

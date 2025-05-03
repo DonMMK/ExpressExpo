@@ -8,7 +8,7 @@ import { colors } from '@/constants/colors';
 
 export default function TabLayout() {
   const { theme } = useTheme();
-  
+
   return (
     <Tabs
       screenOptions={{
@@ -19,7 +19,9 @@ export default function TabLayout() {
           height: Platform.OS === 'ios' ? 85 : 60,
           paddingTop: 8,
           paddingBottom: Platform.OS === 'ios' ? 30 : 8,
-          backgroundColor: theme.dark ? 'rgba(30, 30, 30, 0.8)' : 'rgba(255, 255, 255, 0.8)',
+          backgroundColor: theme.dark
+            ? 'rgba(30, 30, 30, 0.8)'
+            : 'rgba(255, 255, 255, 0.8)',
           borderTopWidth: 0,
           elevation: 0,
           position: 'absolute',
@@ -28,7 +30,13 @@ export default function TabLayout() {
           <BlurView
             intensity={80}
             tint={theme.dark ? 'dark' : 'light'}
-            style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
           />
         ),
         tabBarLabelStyle: {
@@ -63,7 +71,9 @@ export default function TabLayout() {
         name="settings"
         options={{
           title: 'Settings',
-          tabBarIcon: ({ color, size }) => <Settings size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Settings size={size} color={color} />
+          ),
         }}
       />
     </Tabs>

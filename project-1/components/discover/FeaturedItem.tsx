@@ -39,29 +39,32 @@ export default function FeaturedItem({
     <TouchableOpacity
       style={[
         styles.container,
-        { backgroundColor: theme.colors.card, shadowColor: theme.dark ? '#000' : '#222' }
+        {
+          backgroundColor: theme.colors.card,
+          shadowColor: theme.dark ? '#000' : '#222',
+        },
       ]}
       onPress={onPress}
       activeOpacity={0.8}
     >
       <Image source={{ uri: image }} style={styles.image} />
-      
+
       <View style={styles.content}>
         <View style={styles.textContainer}>
           <Text style={[styles.title, { color: theme.colors.text }]}>
             {title}
           </Text>
-          <Text 
+          <Text
             style={[styles.description, { color: theme.colors.textSecondary }]}
             numberOfLines={2}
           >
             {description}
           </Text>
         </View>
-        
+
         <ChevronRight size={20} color={theme.colors.textSecondary} />
       </View>
-      
+
       {tag && (
         <View style={[styles.tag, { backgroundColor: getTagColor() }]}>
           <Text style={styles.tagText}>{tag}</Text>

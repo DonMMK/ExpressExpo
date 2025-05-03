@@ -1,5 +1,13 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, FlatList, Dimensions, TouchableOpacity, Image } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Dimensions,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Animated, { FadeInRight, FadeInLeft } from 'react-native-reanimated';
@@ -15,21 +23,27 @@ const onboardingSlides = [
   {
     id: '1',
     title: 'Welcome to ExpressExpo',
-    description: 'Your all-in-one solution for managing your day-to-day tasks and projects',
-    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+    description:
+      'Your all-in-one solution for managing your day-to-day tasks and projects',
+    image:
+      'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   },
   {
     id: '2',
     title: 'Stay Organized',
-    description: 'Create tasks, set priorities, and track your progress with ease',
-    image: 'https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+    description:
+      'Create tasks, set priorities, and track your progress with ease',
+    image:
+      'https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   },
   {
     id: '3',
     title: 'Connect & Collaborate',
-    description: 'Share your projects with friends and colleagues for seamless collaboration',
-    image: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-  }
+    description:
+      'Share your projects with friends and colleagues for seamless collaboration',
+    image:
+      'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  },
 ];
 
 export default function OnboardingScreen() {
@@ -67,10 +81,16 @@ export default function OnboardingScreen() {
       <View style={styles.slide}>
         <Image source={{ uri: item.image }} style={styles.image} />
         <View style={styles.textContainer}>
-          <Animated.Text entering={FadeInRight.duration(800)} style={[styles.title, { color: theme.colors.text }]}>
+          <Animated.Text
+            entering={FadeInRight.duration(800)}
+            style={[styles.title, { color: theme.colors.text }]}
+          >
             {item.title}
           </Animated.Text>
-          <Animated.Text entering={FadeInRight.delay(200).duration(800)} style={[styles.description, { color: theme.colors.textSecondary }]}>
+          <Animated.Text
+            entering={FadeInRight.delay(200).duration(800)}
+            style={[styles.description, { color: theme.colors.textSecondary }]}
+          >
             {item.description}
           </Animated.Text>
         </View>
@@ -79,11 +99,15 @@ export default function OnboardingScreen() {
   };
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
       <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
-        <Text style={[styles.skipText, { color: theme.colors.primary }]}>Skip</Text>
+        <Text style={[styles.skipText, { color: theme.colors.primary }]}>
+          Skip
+        </Text>
       </TouchableOpacity>
-      
+
       <FlatList
         ref={flatListRef}
         data={onboardingSlides}
@@ -97,22 +121,29 @@ export default function OnboardingScreen() {
           setCurrentIndex(index);
         }}
       />
-      
+
       <View style={styles.indicatorContainer}>
         {onboardingSlides.map((_, index) => (
           <View
             key={index}
             style={[
               styles.indicator,
-              { backgroundColor: index === currentIndex ? colors.primary : colors.gray },
+              {
+                backgroundColor:
+                  index === currentIndex ? colors.primary : colors.gray,
+              },
             ]}
           />
         ))}
       </View>
-      
+
       <View style={styles.buttonContainer}>
         <Button
-          title={currentIndex === onboardingSlides.length - 1 ? "Get Started" : "Next"}
+          title={
+            currentIndex === onboardingSlides.length - 1
+              ? 'Get Started'
+              : 'Next'
+          }
           onPress={handleNext}
           style={styles.button}
         />

@@ -4,16 +4,16 @@ import * as Google from 'expo-auth-session/providers/google';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import * as SecureStore from 'expo-secure-store';
 import { initializeFirebase, auth, firestore } from '@/firebase/config';
-import { 
-  signInWithCredential, 
-  GoogleAuthProvider, 
+import {
+  signInWithCredential,
+  GoogleAuthProvider,
   OAuthProvider,
   signInAnonymously as signInAnonymouslyFirebase,
   signOut as signOutFirebase,
   updateProfile,
   deleteUser,
   onAuthStateChanged,
-  User as FirebaseUser
+  User as FirebaseUser,
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { initializePurchases } from '@/lib/revenuecat';
@@ -89,7 +89,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error('Error checking onboarding status:', error);
       }
     };
-    
+
     checkOnboardingStatus();
   }, []);
 
@@ -110,13 +110,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           email: firebaseUser.email,
           photoURL: firebaseUser.photoURL,
         };
-        
+
         setUser(userProfile);
         setIsAuthenticated(true);
-        
+
         // Initialize RevenueCat with user ID
         initializePurchases(firebaseUser.uid);
-        
+
         // Check if user document exists in Firestore, create if not
         await ensureUserDocument(firebaseUser);
       } else {
@@ -124,7 +124,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(null);
         setIsAuthenticated(false);
       }
-      
+
       setIsLoading(false);
     });
 
@@ -137,10 +137,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (response?.type === 'success') {
       const { id_token } = response.params;
       const credential = GoogleAuthProvider.credential(id_token);
-      signInWithCredential(auth, credential)
-        .catch(error => {
-          console.error('Error signing in with Google:', error);
-        });
+      signInWithCredential(auth, credential).catch((error) => {
+        console.error('Error signing in with Google:', error);
+      });
     }
   }, [response]);
 
@@ -149,7 +148,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const userDocRef = doc(firestore, 'users', firebaseUser.uid);
       const userDoc = await getDoc(userDocRef);
-      
+
       if (!userDoc.exists()) {
         // Create new user document
         await setDoc(userDocRef, {
@@ -193,14 +192,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           AppleAuthentication.AppleAuthenticationScope.EMAIL,
         ],
       });
-      
+
       // Create Apple credential
       const provider = new OAuthProvider('apple.com');
       const authCredential = provider.credential({
         idToken: credential.identityToken as string,
         rawNonce: credential.nonce,
       });
-      
+
       // Sign in with Firebase
       await signInWithCredential(auth, authCredential);
     } catch (error) {
@@ -235,15 +234,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (!auth.currentUser) {
         throw new Error('No authenticated user');
       }
-      
+
       await updateProfile(auth.currentUser, profile);
-      
+
       // Update Firestore document
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       await setDoc(userDocRef, profile, { merge: true });
-      
+
       // Update local state
-      setUser(prev => {
+      setUser((prev) => {
         if (!prev) return null;
         return {
           ...prev,
@@ -262,7 +261,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (!auth.currentUser) {
         throw new Error('No authenticated user');
       }
-      
+
       await deleteUser(auth.currentUser);
     } catch (error) {
       console.error('Error deleting account:', error);
@@ -271,7 +270,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider 
+    <AuthContext.Provider
       value={{
         user,
         isAuthenticated,

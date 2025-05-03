@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as AppleAuthentication from 'expo-apple-authentication';
@@ -59,51 +66,77 @@ export default function SignInScreen() {
   };
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
       <LinearGradient
         colors={[colors.primary, colors.secondary]}
         style={styles.headerBackground}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
-      
+
       <View style={styles.content}>
-        <Animated.View entering={FadeIn.duration(800)} style={styles.logoContainer}>
+        <Animated.View
+          entering={FadeIn.duration(800)}
+          style={styles.logoContainer}
+        >
           <Image
-            source={{ uri: 'https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' }}
+            source={{
+              uri: 'https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+            }}
             style={styles.logo}
           />
         </Animated.View>
-        
-        <Animated.View entering={FadeIn.delay(300).duration(800)} style={styles.textContainer}>
-          <Text style={[styles.title, { color: theme.colors.text }]}>ExpressExpo</Text>
-          <Text style={[styles.subtitle, { color: theme.colors.textSecondary }]}>
+
+        <Animated.View
+          entering={FadeIn.delay(300).duration(800)}
+          style={styles.textContainer}
+        >
+          <Text style={[styles.title, { color: theme.colors.text }]}>
+            ExpressExpo
+          </Text>
+          <Text
+            style={[styles.subtitle, { color: theme.colors.textSecondary }]}
+          >
             Sign in to continue to your account
           </Text>
         </Animated.View>
-        
-        <Animated.View entering={FadeIn.delay(600).duration(800)} style={styles.buttonContainer}>
-          <TouchableOpacity 
-            style={[styles.socialButton, { backgroundColor: theme.colors.card }]} 
+
+        <Animated.View
+          entering={FadeIn.delay(600).duration(800)}
+          style={styles.buttonContainer}
+        >
+          <TouchableOpacity
+            style={[
+              styles.socialButton,
+              { backgroundColor: theme.colors.card },
+            ]}
             onPress={handleGoogleSignIn}
             disabled={isLoading}
           >
             <Feather name="chrome" size={24} color="#4285F4" />
-            <Text style={[styles.socialButtonText, { color: theme.colors.text }]}>
+            <Text
+              style={[styles.socialButtonText, { color: theme.colors.text }]}
+            >
               Continue with Google
             </Text>
           </TouchableOpacity>
-          
+
           {Platform.OS === 'ios' && (
             <AppleAuthentication.AppleAuthenticationButton
-              buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
-              buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+              buttonType={
+                AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN
+              }
+              buttonStyle={
+                AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
+              }
               cornerRadius={8}
               style={styles.appleButton}
               onPress={handleAppleSignIn}
             />
           )}
-          
+
           <Button
             title="Continue as Guest"
             onPress={handleGuestSignIn}

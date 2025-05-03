@@ -3,17 +3,17 @@ export const colors = {
   primary: '#007AFF',
   primaryDark: '#0061CC',
   primaryLight: '#4DA3FF',
-  
+
   // Secondary colors
   secondary: '#5856D6',
   secondaryDark: '#4845B3',
   secondaryLight: '#7A79E2',
-  
+
   // Accent colors
   accent: '#FF2D55',
   accentDark: '#D41F44',
   accentLight: '#FF5D7D',
-  
+
   // Neutrals
   background: '#F8F8F8',
   backgroundDark: '#1A1A1A',
@@ -27,12 +27,12 @@ export const colors = {
   textTertiaryDark: '#666666',
   border: '#E0E0E0',
   borderDark: '#3A3A3A',
-  
+
   // States
   success: '#34C759',
   warning: '#FF9500',
   error: '#FF3B30',
-  
+
   // Common colors
   white: '#FFFFFF',
   black: '#000000',
