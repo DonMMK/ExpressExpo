@@ -22,7 +22,9 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    rm -rf node_modules package-lock.json
    rm -rf .expo/
    ```
+
 4. Run prettier
+
    ```bash
    npx prettier --write .
    ```
