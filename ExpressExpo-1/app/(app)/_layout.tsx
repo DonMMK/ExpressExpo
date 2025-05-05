@@ -1,8 +1,8 @@
-import React from 'react';
-import { Stack } from 'expo-router';
-import { useAuth } from '@/hooks/useAuth';
-import { Text, View, ActivityIndicator, StyleSheet } from 'react-native';
-import { colors } from '@/constants/colors';
+import React from "react";
+import { Stack } from "expo-router";
+import { useAuth } from "@/hooks/useAuth";
+import { Text, View, ActivityIndicator, StyleSheet } from "react-native";
+import { colors } from "@/constants/colors";
 
 export default function AppLayout() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -30,9 +30,9 @@ export default function AppLayout() {
         name="profile-settings"
         options={{
           headerShown: true,
-          title: 'Settings',
-          presentation: 'modal',
-          animation: 'slide_from_bottom',
+          title: "Settings",
+          presentation: "modal",
+          animation: "slide_from_bottom",
         }}
       />
     </Stack>
@@ -42,13 +42,13 @@ export default function AppLayout() {
 const styles = StyleSheet.create({
   loadingContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   errorContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   errorText: {
     fontSize: 16,

@@ -29,6 +29,20 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx prettier --write .
    ```
 
+5. Create development build
+
+   ```bash
+   npm install -g eas-cli
+   eas build:configure
+   eas build --profile development --platform ios
+   ```
+
+6. Run development build
+
+   ```bash
+   npx expo start --dev-client
+   ```
+
    In the output, you'll find options to open the app in a
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)

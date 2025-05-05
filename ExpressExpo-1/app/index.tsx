@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import { Redirect } from 'expo-router';
-import { useAuth } from '@/hooks/useAuth';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { colors } from '@/constants/colors';
+import { useEffect } from "react";
+import { Redirect } from "expo-router";
+import { useAuth } from "@/hooks/useAuth";
+import { View, ActivityIndicator, StyleSheet } from "react-native";
+import { colors } from "@/constants/colors";
 
 export default function Index() {
   const { isAuthenticated, isLoading, hasCompletedOnboarding } = useAuth();
@@ -28,8 +28,8 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: colors.background,
   },
 });

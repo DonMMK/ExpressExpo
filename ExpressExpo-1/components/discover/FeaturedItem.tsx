@@ -62,7 +62,11 @@ export default function FeaturedItem({
           </Text>
         </View>
 
-        <IconSymbol name="chevron.right" size={20} color={theme.colors.textSecondary} />
+        <IconSymbol
+          name="chevron.right"
+          size={20}
+          color={theme.colors.textSecondary}
+        />
       </View>
 
       {tag && (

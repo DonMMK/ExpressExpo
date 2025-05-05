@@ -51,7 +51,11 @@ export default function SearchBar({
 
       {value.length > 0 && (
         <TouchableOpacity onPress={handleClear} style={styles.clearButton}>
-          <IconSymbol name="xmark.circle.fill" size={18} color={theme.colors.textSecondary} />
+          <IconSymbol
+            name="xmark.circle.fill"
+            size={18}
+            color={theme.colors.textSecondary}
+          />
         </TouchableOpacity>
       )}
     </View>
