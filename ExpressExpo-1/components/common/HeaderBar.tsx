@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "@/context/ThemeContext";
-import { Bell } from "lucide-react-native";
+import { IconSymbol } from "@/components/ui/IconSymbol"; // ✅ New import
 
 interface HeaderBarProps {
   title: string;
@@ -41,7 +41,7 @@ export default function HeaderBar({
           ]}
           onPress={onNotificationPress}
         >
-          <Bell size={20} color={theme.colors.text} />
+          <IconSymbol name="bell.fill" size={20} color={theme.colors.text} />
         </TouchableOpacity>
       )}
     </View>

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useTheme } from "@/context/ThemeContext";
-import { ChevronRight } from "lucide-react-native";
+import { IconSymbol } from "@/components/ui/IconSymbol"; // ✅ New import
 import { colors } from "@/constants/colors";
 
 interface FeaturedItemProps {
@@ -62,7 +62,7 @@ export default function FeaturedItem({
           </Text>
         </View>
 
-        <ChevronRight size={20} color={theme.colors.textSecondary} />
+        <IconSymbol name="chevron.right" size={20} color={theme.colors.textSecondary} />
       </View>
 
       {tag && (

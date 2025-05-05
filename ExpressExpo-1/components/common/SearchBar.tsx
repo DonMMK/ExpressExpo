@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
-import { Search, X } from "lucide-react-native";
 import { useTheme } from "@/context/ThemeContext";
+import { IconSymbol } from "@/components/ui/IconSymbol"; // ✅ New import
 
 interface SearchBarProps {
   value: string;
@@ -33,7 +33,8 @@ export default function SearchBar({
         },
       ]}
     >
-      <Search
+      <IconSymbol
+        name="magnifyingglass"
         size={20}
         color={theme.colors.textSecondary}
         style={styles.icon}
@@ -50,7 +51,7 @@ export default function SearchBar({
 
       {value.length > 0 && (
         <TouchableOpacity onPress={handleClear} style={styles.clearButton}>
-          <X size={18} color={theme.colors.textSecondary} />
+          <IconSymbol name="xmark.circle.fill" size={18} color={theme.colors.textSecondary} />
         </TouchableOpacity>
       )}
     </View>
