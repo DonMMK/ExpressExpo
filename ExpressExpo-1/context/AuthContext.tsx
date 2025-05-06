@@ -3,7 +3,11 @@ import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import * as AppleAuthentication from "expo-apple-authentication";
 import * as SecureStore from "expo-secure-store";
-import { initializeFirebase, auth, firestore } from "@/firebase/config";
+import {
+  initializeFirebase,
+  getFirebaseAuth,
+  getFirestoreDb,
+} from "@/firebase/config";
 import {
   signInWithCredential,
   GoogleAuthProvider,
@@ -71,6 +75,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
+
+  const auth = getFirebaseAuth();
+  const firestore = getFirestoreDb();
 
   // Google OAuth configuration
   const [request, response, promptAsync] = Google.useAuthRequest({
