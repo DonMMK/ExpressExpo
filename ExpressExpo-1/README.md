@@ -1,7 +1,4 @@
-# Welcome to your Expo app 👋
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
+# Express Expo Set Up and Notes 👋
 ## Get started
 
 1. Install dependencies
@@ -44,6 +41,33 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ```
 
    In the output, you'll find options to open the app in a
+
+### Create a development build
+- Refer to section above
+
+### Troubleshooting and Helpful links.
+- Warning: Error: Component auth has not been registered yet https://github.com/expo/expo/issues/36588
+
+### Setting up Firebase
+- Go to Firebase console and create a new project.
+- Create as a webapp.
+
+- Configure Sign in with Apple (https://developer.apple.com/help/account/capabilities/configure-sign-in-with-apple-for-the-web/)
+- Create service id, configure web auth (https://developer.apple.com/forums/thread/675940)
+- Paste services ID in Firebase console.
+- If EAS build is done automatically an Identifier is created for you. Use this in your Firebase console.
+
+### Setting up AWS Keyvault
+
+### Setting up RevenueCat for iOS and Android
+
+### Setting up google sign in on Android device + EAS development builds
+
+
+
+# Expo Boilerplate
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)
 - [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
