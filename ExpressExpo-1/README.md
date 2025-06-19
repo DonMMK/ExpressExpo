@@ -48,7 +48,7 @@
 ### Troubleshooting and Helpful links.
 - Warning: Error: Component auth has not been registered yet https://github.com/expo/expo/issues/36588
 
-### Setting up Firebase
+### Setting up Firebase and Auth
 - Go to Firebase console and create a new project.
 - Create as a webapp.
 
@@ -62,6 +62,16 @@
 ### Setting up RevenueCat for iOS and Android
 
 ### Setting up google sign in on Android device + EAS development builds
+
+### Common Components
+- Bottom Sheet (https://github.com/gorhom/react-native-bottom-sheet - v3)
+- Implementing a map (Using Expo map)
+- Creating icons
+- Search bar and indexing in firebase
+
+### Account Creation and Account Deletion
+
+### AppStore and PlayStore Guidelines
 
 
 
