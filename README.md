@@ -4,13 +4,15 @@ Last Updated: October 8, 2025
 
 # 🛠️ 1. Setup
 
-## What You Need
+## What You Need and Why
 
-- GitHub account
-- Apple Developer account (US$99/yr)
-- Google Play Developer account (US$25 one‑time)
-- AI coding assistant (e.g., GitHub Copilot, ChatGPT, Claude Code)
-- IDE (e.g., VS Code or Cursor)
+| Item | Price | Why you need it |
+| :--- | :------: | :------: |
+| Github account | Free |  [For more information checkout the official github page](https:github.com) |
+| Apple Developer account | (US$99/yr) | To release to |
+| Google Play Developer account | (US$25 one‑time) | 0.75 |
+| AI coding assistant (e.g., GitHub Copilot, ChatGPT, Claude Code) | 12 | 0.75 |
+| IDE (e.g., VSCode, Cursor, Webstorm ) | Free | This is what you use to |
 
 ## Technology Stack
 
