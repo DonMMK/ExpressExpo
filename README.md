@@ -1,6 +1,6 @@
 # ExpressExpo: Idea to Income in 24 hours
 
-Last Updated: October 8, 2025 
+Last Updated: October 27, 2025 
 
 # 🛠️ 1. Setup
 
@@ -9,16 +9,16 @@ Last Updated: October 8, 2025
 | Item | Price | Why you need it |
 | :--- | :------: | :------: |
 | Github account | Free |  [For more information checkout the official github page](https:github.com) |
-| Apple Developer account | (US$99/yr) | To release to |
-| Google Play Developer account | (US$25 one‑time) | 0.75 |
-| AI coding assistant (e.g., GitHub Copilot, ChatGPT, Claude Code) | 12 | 0.75 |
-| IDE (e.g., VSCode, Cursor, Webstorm ) | Free | This is what you use to |
+| Apple Developer account | (US$99/yr) | To release to the Apple Store |
+| Google Play Developer account | (US$25 one‑time) | To release to the Play Store |
+| AI coding assistant (e.g., GitHub Copilot, ChatGPT, Claude Code) | Usage based cost | To expedite the development process |
+| IDE (e.g., VSCode, Cursor, Webstorm ) | Free | This is what you use to edit your code. VSCode is reccomended to set up your coding assistant yourself or you can use Cursor which also comes with integrations with AI Coding assistants |
 
 ## Technology Stack
 
-- **Expo (React Native)** for cross‑platform apps
-- **Firebase** or **Supabase** for backend
-- **RevenueCat** for monetization
+- **Expo (React Native)** for cross‑platform mobile apps
+- **Firebase** or **Supabase** for backend and database
+- **RevenueCat** for in‑app purchases or subscriptions
 - **PostHog** for analytics
 
 ---
@@ -31,6 +31,24 @@ Last Updated: October 8, 2025
 - Doing a static splash screen for minimal product + doing animations for it
 - Theme selection and custom styling guidelines for both light and dark theme or using one set of color palette that doesnt switch
 
+## Color Palette
+
+## App Icon Design
+
+
+## In App Content
+- Use AI image generation (e.g., Midjourney, DALL·E) for custom graphics
+- Ensure no copyright issues with generated images
+
+## Animated Splash screen
+
+- Set up lottie asset using chat gpt to get transparent background
+- then split elements
+- add to lottie lab with the moving element on top of the static one on elements
+- do animation by changing the positions create animation keyframes
+- install lottie react native and code up
+- to avoid the flicker have the first frame as a static image and then animate from there
+
 ---
 
 # 🧑‍💻 3. Development
@@ -39,29 +57,45 @@ Last Updated: October 8, 2025
 
 - Version control with Git/GitHub
 - Use AI‑driven development agents
+- Modular component structure for scalability
+- Responsive design for various screen sizes
 - Enforce security best practices (auth/authz, env vars)
+
+## Feature Requests
+
+- If you are using the expressexpo template this already has code for a basic app structure with auth, navigation, backend and some generic components so you can then build on top of this and add your own features. For example if you are making a budgeting app you can break down into creation budget feature, tracking expenses feature, viewing reports feature etc.
+- Do it in chunks so you are not creating a massive PR that is hard to review or confusing the AI and writing code that is bloated and broken
+- Create merge requests for each feature. This makes it easier to review changes and ensures that each feature is properly tested before being merged.
+- Using Git / Github for this. Think of it like a save point in a game. If something goes wrong you can always go back to the last save point.
+
+## Debugging & Logging
+
+- UI add colors to different components to visually see where things are
+- For backend use firebase logging and monitoring
+
+
 
 ## Environments
 
-- Dev vs Prod accounts (Firebase, backend)
-- Env variables: use Expo config + secure storage (e.g., AWS Key Vault)
+- When setting up the project ensure to set up different environments for development and production. This allows you to test features and changes in a safe environment before pushing them to production users who may be relying on the app. This also ensure you do not accidentally alter customer data or other important information.
+- Multiple firebase projects for dev and prod. 
+- Use of Expo config + AWS Key vault to manage different environment variables for dev and prod builds
 
-## Auth & Onboarding
+## Authentication, Authorization & Security
 
-- On first launch: landing page → sign in (Google, Apple) or Guest access
-- Onboarding flow design to maximize engagement
-    - Swipe to continue
+- Think of this using a person trying to enter a building analogy and hotel room key analogy
+- Authentication is like checking the ID of a person trying to enter a building. You want to make sure they are who they say they are before letting them in. This is typically done using usernames and passwords, or other methods such as social logins (Google, Facebook, Apple, etc.) or biometric authentication (fingerprint, face recognition, etc.)
+- Authorization is like giving a person a key to a specific hotel room within the building. Even if they are allowed to enter the building, they may not have access to all areas within it.
+- For authentication use Firebase Authentication or Supabase Auth. These services provide a secure and easy way to manage user authentication.
+- For authorization, you need to do authz on all backend operations to ensure that users can only access their own data. This is especially important if you are dealing with sensitive information such as financial data, personal information, etc.
+
+## Onboarding
+
+- On first launch take user to onboarding flow design to maximize engagement
+    - this is where you have the most attention from the user to highlight the app
+    - you can even use this as an opportunity to give a preview of the app's features and then pop up with a paywall if you have one
     - include images that are attention grabbing
-    - get started
 
-### Animated Splash screen
-
-- Set up lottie asset using chat gpt to get transparent background
-- then split elements
-- add to lottie lab with the moving element on top of the static one on elements
-- do animation by changing the positions create animation keyframes
-- install lottice react native and code up
-- to avoid the flicker have the first frame as a static image and then animate from there
 
 ## Data & APIs
 
