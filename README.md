@@ -4,6 +4,12 @@ Last Updated: October 27, 2025
 
 # 🛠️ 1. Setup
 
+## What this guide will cover
+
+This guide will cover the steps to go from having an idea to developing, deploying and making an income from a mobile app.
+You dont need to know how to code to follow this guide as it will leverage AI tools to help you with the coding and development process. 
+Throughout the process you will learn concepts and overtime you will understand your code better and be able to improve on your work.
+
 ## What You Need and Why
 
 | Item | Price | Why you need it |
@@ -11,6 +17,8 @@ Last Updated: October 27, 2025
 | Github account | Free |  [For more information checkout the official github page](https:github.com) |
 | Apple Developer account | (US$99/yr) | To release to the Apple Store |
 | Google Play Developer account | (US$25 one‑time) | To release to the Play Store |
+| Expo account | Generous free tier then usage based cost | For building and deploying your app |
+| Firebase or Supabase account | Generous free tier then usage based cost | For backend and database |
 | AI coding assistant (e.g., GitHub Copilot, ChatGPT, Claude Code) | Usage based cost | To expedite the development process |
 | IDE (e.g., VSCode, Cursor, Webstorm ) | Free | This is what you use to edit your code. VSCode is reccomended to set up your coding assistant yourself or you can use Cursor which also comes with integrations with AI Coding assistants |
 
@@ -20,6 +28,14 @@ Last Updated: October 27, 2025
 - **Firebase** or **Supabase** for backend and database
 - **RevenueCat** for in‑app purchases or subscriptions
 - **PostHog** for analytics
+
+Assuming you've never built a mobile app before, or even written a line of code, this guide will walk you through the entire process step‑by‑step.
+Lets imaging building a app like a resturant. A resturant has a front of house where customers interact with the menu, place orders and enjoy their meals. The back of house is where the chefs prepare the food, handle orders or even reaching out to external vendors to get more ingredients.
+
+When you imagine it this way it makes it easier to understand the different components of a mobile app. The front of house is like the frontend of the app that users interact with, while the back of house is like the backend that handles data storage, user authentication, and other server‑side logic.
+
+For our mobile app, we will use Expo (React Native) for the frontend, Firebase or Supabase for the backend.
+We will have external services running in the app to handle payments (RevenueCat) and analytics (PostHog).
 
 ---
 
@@ -32,9 +48,19 @@ Last Updated: October 27, 2025
 - Theme selection and custom styling guidelines for both light and dark theme or using one set of color palette that doesnt switch
 
 ## Color Palette
+- Use tools like [Coolors](https://coolors.co/) or [Adobe Color](https://color.adobe.com/create) to generate a cohesive color scheme
+- Choose primary, secondary, accent, background, and text colors
+- Ensure good contrast for readability and accessibility
+
 
 ## App Icon Design
+- Tools like chatgpt can genrate images based on your app concept
+- you can use a combiurastion of chatgpt genreated designs then impoirt into figma or canva to refine and finalize the design
 
+
+## Styling and UI Library
+- Think painting by hand using your own colors and brushes rather than using a paint by numbers kit
+- obviously each have their own advantages and disadvantages. stylesheets give you more control and flexibility but take more time to set up and maintain. UI libraries give you a faster way to get started with pre built components but can be limiting in terms of customization and may lead to a less unique look and feel for your app.
 
 ## In App Content
 - Use AI image generation (e.g., Midjourney, DALL·E) for custom graphics
@@ -60,6 +86,16 @@ Last Updated: October 27, 2025
 - Modular component structure for scalability
 - Responsive design for various screen sizes
 - Enforce security best practices (auth/authz, env vars)
+
+## Quick start
+- You can create a new expo project following the instructions on the expo website [here](https://docs.expo.dev/get-started/installation/) or clone the expressexpo template from github [here](https://github.com/DonMMK/expressexpo).
+- If you create a new expo project you can go to the section Tooling - ExpoGo below to get started, but if you clone the expressexpo template you can skip to the section Creating your first Expo Development Build below as you cannot use expo go with the ExpressExpo template as it uses native code for some of the features.
+
+## Tooling - ExpoGo
+
+
+## Creating your first Expo Development Build
+- Follow the instructions on the expo website [here](https://docs.expo.dev/development/introduction/) to set up your development environment and create your first development build.
 
 ## Feature Requests
 
