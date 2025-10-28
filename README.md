@@ -14,7 +14,7 @@ Throughout the process you will learn concepts and overtime you will understand 
 
 | Item | Price | Why you need it |
 | :--- | :------: | :------: |
-| Github account | Free |  [For more information checkout the official github page](https:github.com) |
+| Github account | Free | To store your code safely, version it. [For more information checkout the official github page](https:github.com) |
 | Apple Developer account | (US$99/yr) | To release to the Apple Store |
 | Google Play Developer account | (US$25 one‑time) | To release to the Play Store |
 | Expo account | Generous free tier then usage based cost | For building and deploying your app |
@@ -149,7 +149,6 @@ We will have external services running in the app to handle payments (RevenueCat
 - Recruit ~20 testers via Reddit, X, etc.
 - Test the UI and buttons and other stuff because Android and iOS have slight differences that cause things to work / not work
 
----
 
 ## 🧪 App Store Listing
 
